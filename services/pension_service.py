@@ -98,6 +98,17 @@ class PensionService:
         )
         self.employees.append(emp7)
 
+        # Employee 8: New employee - no pension plan, qualifies for Q2 2026 enrollment
+        emp8 = Employee(
+            employee_id=8,
+            first_name="Mary",
+            last_name="Morrison",
+            employment_date=date(2023, 6, 1),  # 3-year mark: 2026-06-01 ✅ falls in Q2 2026
+            yearly_salary=112000.00,
+            pension_plan=None,
+        )
+        self.employees.append(emp8)
+
     def get_all_employees(self):
         """
         Get all employees sorted by yearly_salary (DESC) then last_name (ASC).

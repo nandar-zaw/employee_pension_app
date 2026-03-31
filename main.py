@@ -14,7 +14,7 @@ def print_all_employees():
 def print_quarterly_upcoming_enrollees():
     """Print quarterly upcoming enrollees report in JSON format."""
     service = PensionService()
-    employees = service.get_quarterly_upcoming_enrollees()
+    employees = service.get_quarterly_upcoming2_enrollees()
     output = JsonFormatter.format_quarterly_upcoming_enrollees(employees)
     print("\n" + output + "\n")
 
