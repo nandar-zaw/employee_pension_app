@@ -13,31 +13,30 @@ class TestPensionService(unittest.TestCase):
         self.service = PensionService()
 
     def test_get_all_employees_count(self):
-        """Test that all 6 preloaded employees are loaded."""
+        """Test that all 7 preloaded employees are loaded."""
         employees = self.service.get_all_employees()
-        self.assertEqual(len(employees), 6)
+        self.assertEqual(len(employees), 7)
 
     def test_get_all_employees_sorted_by_salary_descending(self):
         """Test that employees are sorted by salary descending."""
         employees = self.service.get_all_employees()
         # Verify the first employee has the highest salary
-        self.assertEqual(employees[0].employee_id, 3)  # Carly Agar with 842000.75
+        self.assertEqual(employees[0].employee_id, 3)  # Carly Jones with 842000.75
         self.assertEqual(employees[0].yearly_salary, 842000.75)
         # Verify the last employee has the lowest salary
-        self.assertEqual(employees[-1].employee_id, 4)  # Wesley Schneider with 74500.00
-        self.assertEqual(employees[-1].yearly_salary, 74500.00)
+        self.assertEqual(employees[-1].employee_id, 7)  # Johnny Edwards with 95500.00
+        self.assertEqual(employees[-1].yearly_salary, 95500.00)
 
     def test_get_all_employees_secondary_sort_by_lastname_ascending(self):
-        """Test that employees with same salary are sorted by last_name ascending."""
+        """Test that employees are sorted by salary descending, then last_name ascending."""
         employees = self.service.get_all_employees()
-        # Find employees with same salary (there should be some with no pension plan)
-        # Verify the order is correct by checking the list
-        last_names = [emp.last_name for emp in employees]
-        # Among employees without the highest salary, verify alphabetical order
-        # Get employees without pension plans: Shaw (no), Agar (has), Schneider, Wiltord, Tesfalem
-        # After sorting by salary desc then by last_name asc
-        self.assertEqual(employees[1].last_name, "Shaw")  # 2nd highest salary
-        self.assertEqual(employees[2].last_name, "Agar")  # Daniel, employee_id=1
+        # Verify the sorting is correct
+        # Check that salaries are in descending order
+        for i in range(len(employees) - 1):
+            self.assertGreaterEqual(employees[i].yearly_salary, employees[i + 1].yearly_salary)
+            # If salaries are equal, check last names are in ascending order
+            if employees[i].yearly_salary == employees[i + 1].yearly_salary:
+                self.assertLessEqual(employees[i].last_name, employees[i + 1].last_name)
 
     def test_employee_without_pension_plan(self):
         """Test that employees without pension plans have None for pension_plan field."""
@@ -58,7 +57,7 @@ class TestPensionService(unittest.TestCase):
         self.assertIsNotNone(emp_with_plan.pension_plan)
         self.assertEqual(emp_with_plan.pension_plan.plan_reference_number, "SM2307")
         self.assertEqual(
-            emp_with_plan.pension_plan.enrollment_date, date(2017, 5, 17)
+            emp_with_plan.pension_plan.enrollment_date, date(2025, 5, 17)
         )
         self.assertEqual(emp_with_plan.pension_plan.monthly_contribution, 1555.50)
 
@@ -115,4 +114,3 @@ class TestPensionService(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

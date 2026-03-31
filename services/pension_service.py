@@ -18,37 +18,37 @@ class PensionService:
             employee_id=1,
             first_name="Daniel",
             last_name="Agar",
-            employment_date=date(2023, 1, 17),
+            employment_date=date(2025, 8, 17),
             yearly_salary=105945.50,
             pension_plan=None,
         )
         self.employees.append(emp1)
 
-        # Employee 2: Bernard Shaw - with pension plan
+        # Employee 2: Benard Shaw - with pension plan
         emp2 = Employee(
             employee_id=2,
-            first_name="Bernard",
+            first_name="Benard",
             last_name="Shaw",
-            employment_date=date(2022, 9, 3),
+            employment_date=date(2025, 2, 3),
             yearly_salary=197750.00,
             pension_plan=PensionPlan(
-                plan_reference_number="",  # None represented as empty string for this entry
-                enrollment_date=date(2025, 9, 3),
-                monthly_contribution=100.00,
+                plan_reference_number="EX0089",
+                enrollment_date=date(2026, 2, 3),
+                monthly_contribution=450.00,
             ),
         )
         self.employees.append(emp2)
 
-        # Employee 3: Carly Agar - with pension plan
+        # Employee 3: Carly Jones - with pension plan
         emp3 = Employee(
             employee_id=3,
             first_name="Carly",
-            last_name="Agar",
-            employment_date=date(2014, 5, 16),
+            last_name="Jones",
+            employment_date=date(2024, 5, 16),
             yearly_salary=842000.75,
             pension_plan=PensionPlan(
                 plan_reference_number="SM2307",
-                enrollment_date=date(2017, 5, 17),
+                enrollment_date=date(2025, 5, 17),
                 monthly_contribution=1555.50,
             ),
         )
@@ -59,8 +59,8 @@ class PensionService:
             employee_id=4,
             first_name="Wesley",
             last_name="Schneider",
-            employment_date=date(2023, 7, 21),
-            yearly_salary=74500.00,
+            employment_date=date(2025, 4, 30),
+            yearly_salary=174500.00,
             pension_plan=None,
         )
         self.employees.append(emp4)
@@ -70,8 +70,8 @@ class PensionService:
             employee_id=5,
             first_name="Anna",
             last_name="Wiltord",
-            employment_date=date(2023, 3, 15),
-            yearly_salary=85750.00,
+            employment_date=date(2025, 9, 15),
+            yearly_salary=185750.00,
             pension_plan=None,
         )
         self.employees.append(emp5)
@@ -81,11 +81,22 @@ class PensionService:
             employee_id=6,
             first_name="Yosef",
             last_name="Tesfalem",
-            employment_date=date(2024, 10, 31),
+            employment_date=date(2025, 7, 31),
             yearly_salary=100000.00,
             pension_plan=None,
         )
         self.employees.append(emp6)
+
+        # Employee 7: Johnny Edwards - no pension plan
+        emp7 = Employee(
+            employee_id=7,
+            first_name="Johnny",
+            last_name="Edwards",
+            employment_date=date(2025, 7, 9),
+            yearly_salary=95500.00,
+            pension_plan=None,
+        )
+        self.employees.append(emp7)
 
     def get_all_employees(self):
         """
