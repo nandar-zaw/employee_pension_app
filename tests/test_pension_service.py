@@ -13,9 +13,9 @@ class TestPensionService(unittest.TestCase):
         self.service = PensionService()
 
     def test_get_all_employees_count(self):
-        """Test that all 7 preloaded employees are loaded."""
+        """Test that all 8 preloaded employees are loaded."""
         employees = self.service.get_all_employees()
-        self.assertEqual(len(employees), 7)
+        self.assertEqual(len(employees), 8)
 
     def test_get_all_employees_sorted_by_salary_descending(self):
         """Test that employees are sorted by salary descending."""
