@@ -29,12 +29,12 @@ jobs:
 
     - name: Run tests with pytest
       run: |
-        pytest employee_pension_app/tests/ -v --tb=short
+        pytest tests/ -v --tb=short
 
     - name: Generate test report
       if: always()
       run: |
-        pytest employee_pension_app/tests/ -v --tb=short --junit-xml=test-results.xml
+        pytest tests/ -v --tb=short --junit-xml=test-results.xml
 
     - name: Upload test results
       if: always()
